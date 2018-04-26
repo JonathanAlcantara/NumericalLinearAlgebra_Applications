@@ -14,26 +14,26 @@
 
 import numpy as np
 from math import pow
-from math import sqrt	
+from math import sqrt
 
 A = [[1, 0.2, 0.4], [0.2, 1, 0.5], [0.4, 0.5, 1]]
 L = [[0.0] * len(A) for i in range(len(A))]
 
 
 for row in range(len(A)):
-	sum_row = 0
-	for k in range(row):
-		sum_row += pow(L[row][k], 2)
+    sum_row = 0
+    for k in range(row):
+        sum_row += pow(L[row][k], 2)
 
-	L[row][row] = sqrt(A[row][row] - sum_row)
-	print('%s, %s: %s' % (row+1, row+1, L[row][row]))
-	for column in range(row + 1, len(A)):
-		sum_column = 0
-		for k in range(row):
-			sum_column += L[row][k]*L[column][k]
+    L[row][row] = sqrt(A[row][row] - sum_row)
+    print('%s, %s: %s' % (row+1, row+1, L[row][row]))
+    for column in range(row + 1, len(A)):
+        sum_column = 0
+        for k in range(row):
+            sum_column += L[row][k]*L[column][k]
 
-		L[column][row] = (A[row][column] - sum_column)/L[row][row]
-		print('%s, %s: %s' % (row+1, column+1, L[column][row]))
+        L[column][row] = (A[row][column] - sum_column)/L[row][row]
+        print('%s, %s: %s' % (row+1, column+1, L[column][row]))
 
 A = np.array(A)
 L = np.array(L)

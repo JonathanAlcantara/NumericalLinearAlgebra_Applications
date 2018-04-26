@@ -20,13 +20,13 @@ Y_vector = [2, 3.5, 6.5]
 regressor_matrix = []
 
 for x_element in X_vector:
-    regressor_matrix.append([1,x_element])
+    regressor_matrix.append([1, x_element])
 
 transposed_regressor_matrix = np.transpose(regressor_matrix)
 
 coefficient_vector = np.matmul(
         np.matmul(np.linalg.inv(
-            np.matmul(transposed_regressor_matrix,regressor_matrix)), 
+            np.matmul(transposed_regressor_matrix, regressor_matrix)),
                 transposed_regressor_matrix),
         Y_vector)
 
