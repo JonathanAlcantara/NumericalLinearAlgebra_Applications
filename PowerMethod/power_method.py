@@ -16,22 +16,24 @@ import numpy as np
 
 tolerance = 0.00001
 A = [[1, 0.2, 0], [0.2, 1, 0.5], [0, 0.5, 1]]
-X = [1]*len(A[0])
 
-new_X = list(X)
-eigenvalue_candidate = 1
-solution_residue = eigenvalue_candidate
+def power_method(A):
+    X = [1]*len(A[0])
 
-while solution_residue > tolerance:
-    print '\nLargest Eigenvalue Candidate: ', eigenvalue_candidate
+    new_X = list(X)
+    eigenvalue_candidate = 1
+    solution_residue = eigenvalue_candidate
+
+    while solution_residue > tolerance:
+        print '\nLargest Eigenvalue Candidate: ', eigenvalue_candidate
+        print 'Associated Eigenvector: ', X
+        X = np.matmul(A, X)
+
+        solution_residue = abs(X[0] - eigenvalue_candidate)/abs(X[0])
+        eigenvalue_candidate = X[0]
+
+        for X_element in range(len(X)):
+            X[X_element] = X[X_element]/float(eigenvalue_candidate)
+
+    print '\nLargest Eigenvalue: ', eigenvalue_candidate
     print 'Associated Eigenvector: ', X
-    X = np.matmul(A, X)
-
-    solution_residue = abs(X[0] - eigenvalue_candidate)/abs(X[0])
-    eigenvalue_candidate = X[0]
-
-    for X_element in range(len(X)):
-        X[X_element] = X[X_element]/float(eigenvalue_candidate)
-
-print '\nLargest Eigenvalue: ', eigenvalue_candidate
-print 'Associated Eigenvector: ', X

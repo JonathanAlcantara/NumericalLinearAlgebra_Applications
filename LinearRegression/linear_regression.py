@@ -17,20 +17,23 @@ import numpy as np
 X_vector = [1, 2, 3]
 Y_vector = [2, 3.5, 6.5]
 
-regressor_matrix = []
+def linear_regression(X_vector, Y_vector):
+    regressor_matrix = []
 
-for x_element in X_vector:
-    regressor_matrix.append([1, x_element])
+    for x_element in X_vector:
+        regressor_matrix.append([1, x_element])
 
-transposed_regressor_matrix = np.transpose(regressor_matrix)
+    transposed_regressor_matrix = np.transpose(regressor_matrix)
 
-coefficient_vector = np.matmul(
-        np.matmul(np.linalg.inv(
-            np.matmul(transposed_regressor_matrix, regressor_matrix)),
-                transposed_regressor_matrix),
-        Y_vector)
+    coefficient_vector = np.matmul(
+            np.matmul(np.linalg.inv(
+                np.matmul(transposed_regressor_matrix, regressor_matrix)),
+                    transposed_regressor_matrix),
+            Y_vector)
 
 
-print 'X vector: ', X_vector
-print 'Y vector: ', Y_vector
-print 'Coefficients Vector (B): ', list(coefficient_vector)
+    print 'X vector: ', X_vector
+    print 'Y vector: ', Y_vector
+    print 'Coefficients Vector (B): ', list(coefficient_vector)
+
+    return coefficient_vector
