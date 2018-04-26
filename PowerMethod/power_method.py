@@ -23,6 +23,8 @@ eigenvalue_candidate = 1
 solution_residue = eigenvalue_candidate
 
 while solution_residue > tolerance:
+   print '\nLargest Eigenvalue Candidate: ', eigenvalue_candidate
+   print 'Associated Eigenvector: ', X
    X = np.matmul(A,X)
 
    solution_residue = abs(X[0] - eigenvalue_candidate)/abs(X[0])
@@ -31,5 +33,5 @@ while solution_residue > tolerance:
    for X_element in range(len(X)):
       X[X_element] = X[X_element]/float(eigenvalue_candidate)
 
-print('Largest Eigenvalue: ', eigenvalue_candidate)
-print('Associate Eigenvector: ', list(X))
+print '\nLargest Eigenvalue: ', eigenvalue_candidate
+print 'Associated Eigenvector: ', X

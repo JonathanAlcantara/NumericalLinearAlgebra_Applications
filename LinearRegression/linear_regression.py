@@ -31,6 +31,6 @@ coefficient_vector = np.matmul(
         Y_vector)
 
 
-print('X vector: ', X_vector)
-print('Y vector: ', Y_vector)
-print('Coefficients Vector (B): ', list(coefficient_vector))
+print 'X vector: ', X_vector
+print 'Y vector: ', Y_vector
+print 'Coefficients Vector (B): ', list(coefficient_vector)
