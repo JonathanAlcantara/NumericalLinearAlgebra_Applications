@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# import numpy as np
+import numpy as np
+
 tolerance = 0.00001
 A = [[1,0.2,0],[0.2,1,0.5],[0,0.5,1]]
 X = [1]*len(A[0])
@@ -22,13 +23,8 @@ eigenvalue_candidate = 1
 solution_residue = eigenvalue_candidate
 
 while solution_residue > tolerance:
-   for line in range(len(X)):
-      sum = 0
-      for column in range(len(X)):
-         sum += A[line][column]*X[column]
-      new_X[line] = sum
+   X = np.matmul(A,X)
 
-   X = list(new_X)
    solution_residue = abs(X[0] - eigenvalue_candidate)/abs(X[0])
    eigenvalue_candidate = X[0]
 
@@ -36,4 +32,4 @@ while solution_residue > tolerance:
       X[X_element] = X[X_element]/float(eigenvalue_candidate)
 
 print('Largest Eigenvalue: ', eigenvalue_candidate)
-print('Associate Eigenvector: ', X)
+print('Associate Eigenvector: ', list(X))
