@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
+
 import numpy as np
 import csv
 a = []
 b = []
 
-with open('LUINPUT.csv', newline='') as csvfile:
+with open('LUINPUT.csv','r') as csvfile:
     # o nome 'spamreader' abaixo é só exemplo, poderia ser qq. coisa
     spamreader = csv.reader(csvfile, delimiter=',') # separe por vírgula
 
