@@ -49,3 +49,9 @@ def cholesky(A):
     print '\nL_T :\n', transposed_L
 
     return A, L, transposed_L
+    
+def cholesky_solution(L, B):
+    print 'Cholesky Solution: ', np.matmul(np.linalg.inv(np.matmul(L, np.transpose(L))), np.transpose(B))
+    
+def cholesky_det(L):
+    print 'Cholesky Determinant: ',  np.power(np.prod(L.diagonal()), 2)

@@ -14,6 +14,8 @@
 
 import numpy as np
 from Cholesky.cholesky import cholesky
+from Cholesky.cholesky import cholesky_solution
+from Cholesky.cholesky import cholesky_det
 from PowerMethod.power_method import power_method
 from LinearRegression.linear_regression import linear_regression
 from LU.LU import LU
@@ -34,7 +36,9 @@ with open('input.csv','r') as csvfile:
     for line in spamreader:
       second_argument.append(line)
 
-cholesky(np.array(first_argument, float))
+A, L, L_T = cholesky(np.array(first_argument, float))
+cholesky_solution(L, np.array(second_argument, float))
+cholesky_det(L)
 power_method(np.array(first_argument, float))
-linear_regression(np.array(first_argument, float), np.array(second_argument, float))
+#linear_regression(np.array(first_argument, float)[0], np.array(second_argument, float)[0])
 LU(np.array(first_argument, float), np.array(second_argument, float))
